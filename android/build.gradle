@@ -1,0 +1,22 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+buildscript {
+    ext.kotlin_version = '1.9.22' // Updated to match the Kotlin plugin version
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

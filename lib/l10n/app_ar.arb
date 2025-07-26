@@ -1,0 +1,382 @@
+{
+  "@@locale": "ar",
+  "appTitle": "أشنو",
+  "hello": "مرحبا بكم",
+  "settings": "الإعدادات",
+  "darkMode": "الوضع المظلم",
+  "language": "اللغة",
+  "english": "الإنجليزية",
+  "arabic": "العربية",
+  "french": "الفرنسية",
+  
+  "notifications": "الإشعارات",
+  "notificationsAll": "الكل",
+  "notificationsMessages": "الرسائل",
+  "notificationsActivity": "النشاط",
+  "notificationsSystem": "النظام",
+  "notificationEmpty": "لا توجد إشعارات",
+  "notificationEmptyMessage": "أنت على اطلاع!",
+  "markAsRead": "وضع علامة كمقروء",
+  "markAsUnread": "وضع علامة كغير مقروء",
+  "deleteNotification": "حذف الإشعار",
+  "viewProfile": "عرض الملف الشخصي",
+  "markAllAsRead": "وضع علامة على الكل كمقروء",
+  "clearAllNotifications": "مسح جميع الإشعارات",
+  "clearAllConfirmation": "هل أنت متأكد أنك تريد حذف جميع الإشعارات؟ لا يمكن التراجع عن هذا الإجراء.",
+  "cancel": "إلغاء",
+  "clearAll": "مسح الكل",
+  "notificationSettings": "إعدادات الإشعارات",
+  "follow": "متابعة",
+  "messages": "الرسائل",
+  "search": "بحث",
+  "noMessages": "لا توجد رسائل بعد",
+  "startConversation": "ابدأ محادثة مع شخص ما",
+  "newMessage": "رسالة جديدة",
+  
+  "errorSharingPost": "فشل مشاركة المنشور",
+  "errorLikePost": "فشل تحديث الإعجاب",
+  "activeFilters": "الفلاتر النشطة",
+  "messageToUser": "رسالة إلى {userName}",
+  "@messageToUser": {
+    "description": "عنوان مربع الحوار لإرسال رسالة إلى مستخدم",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "John Doe"
+      }
+    }
+  },
+  "typeYourMessage": "اكتب رسالتك",
+  "send": "إرسال",
+  "messageSent": "تم إرسال الرسالة بنجاح",
+  "respond": "رد",
+  "share": "مشاركة",
+  "message": "رسالة",
+  "responses": "ردود",
+  "filters": "الفلاتر",
+  "postType": "نوع المنشور",
+  "request": "طلب",
+  "offer": "عرض",
+  "city": "المدينة",
+  "activity": "الحرفة",
+  "clearFilters": "مسح الفلاتر",
+  "apply": "تطبيق",
+  "noPosts": "لا توجد منشورات متاحة",
+  "createFirstPost": "كن أول من ينشئ منشور!",
+  "errorLoadingPosts": "خطأ في تحميل المنشورات",
+  "pleaseRetry": "الرجاء المحاولة لاحقاً",
+  "retry": "إعادة المحاولة",
+  "noMatchingResults": "لا توجد نتائج مطابقة",
+  "tryDifferentFilters": "جرب خيارات تصفية مختلفة",
+  "addPost": "إضافة منشور",
+  "messageHint": "اكتب رسالتك...",
+  "cityHint": "اختر المدينة",
+  "activityLabel": "الحرفة",
+  "recordVoice": "تسجيل رسالة صوتية",
+  "postButtonLabel": "نشر",
+  "playingAudioMessage": "جاري تشغيل الرسالة الصوتية...",
+  "tapToPlayAudio": "انقر لتشغيل الرسالة الصوتية",
+  
+  "distance": "المسافة",
+  "whatAreYouLookingFor": "اشنوخاصك ليوم؟",
+  "password": "كلمة المرور",
+  "pleaseEnterPassword": "الرجاء إدخال كلمة المرور",
+  "passwordMinLength": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "pleaseConfirmPassword": "الرجاء تأكيد كلمة المرور",
+  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+  "fullName": "الاسم الكامل",
+  "pleaseEnterName": "الرجاء إدخال الاسم الكامل",
+  "phoneNumber": "رقم الهاتف",
+  "pleaseEnterPhone": "الرجاء إدخال رقم الهاتف",
+  "invalidPhoneNumber": "الرجاء إدخال رقم هاتف صحيح",
+  "preferredLanguage": "اللغة المفضلة",
+  "iAm": "أنا:",
+  "client": "عميل",
+  "professional": "محترف",
+  "chooseProfession": "اختر حرفتك:",
+  "selectOtherActivity": "اختر حرفة آخر",
+  "completeRegistration": "إكمال التسجيل",
+  "continue_": "متابعة",
+  "alreadyMember": "هل أنت عضو مسجل؟",
+  "signIn": "تسجيل الدخول",
+  "createAccount": "إنشاء حساب",
+  "success": "تم بنجاح!",
+  "accountCreated": "تم إنشاء الحساب بنجاح",
+  "continueToApp": "المتابعة إلى التطبيق",
+  
+  "editProfile": "تعديل الملف الشخصي",
+  "textBio": "السيرة النصية (اختياري)",
+  "audioBio": "السيرة الصوتية",
+  "recordAudioBio": "تسجيل سيرة صوتية",
+  "audioBioAvailable": "السيرة الصوتية متاحة",
+  "recordNewAudio": "تسجيل صوت جديد",
+  "audioBioDescription": "سجّل سيرة صوتية قصيرة (حتى 30 ثانية)",
+  "recording": "جاري التسجيل: {duration}",
+  "@recording": {
+    "description": "عرض مدة التسجيل",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "00:15"
+      }
+    }
+  },
+  "stopRecording": "إيقاف التسجيل",
+  "phoneCannotBeChanged": "لا يمكن تغيير رقم الهاتف",
+  "phone": "الهاتف",
+  "professionalActivity": "نشاطك المهني",
+  "selectImageSource": "اختر مصدر الصورة",
+  "camera": "الكاميرا",
+  "gallery": "المعرض",
+  "permissionRequired": "الإذن مطلوب",
+  "mediaPermissionMessage": "تتطلب هذه الميزة إذنًا للوصول إلى الوسائط الخاصة بك. يرجى تمكينه في إعدادات التطبيق.",
+  "openSettings": "فتح الإعدادات",
+  "saveChanges": "حفظ التغييرات",
+  "profileUpdated": "تم تحديث الملف الشخصي بنجاح",
+  "pleaseEnterCity": "الرجاء إدخال المدينة",
+  
+  "postDuration": "مدة المنشور",
+  "unlimited": "غير محدود",
+  "hours48": "48 ساعة",
+  "days7": "7 أيام",
+  "days30": "30 يوم",
+  "maxOneMinute": "حد أقصى دقيقة واحدة",
+  "allowMicPermission": "السماح",
+  "microphoneAccessNeeded": "يتطلب الوصول للميكروفون",
+  "failedToInitializeRecorder": "فشل في تهيئة المسجل",
+  "tryAgain": "حاول مرة أخرى",
+  "tapToRecord": "انقر للتسجيل",
+  "tapToStop": "انقر للتوقف",
+  "audioRecording": "تسجيل صوتي",
+  "otherActivities": "حرف أخرى",
+  "typeToSearch": "اكتب للبحث",
+  "cityRequired": "المدينة مطلوبة",
+  "addOptionalDetails": "إضافة تفاصيل اختيارية (غير مطلوب)",
+  "postSuccessfullySubmitted": "تم إرسال المنشور بنجاح",
+  "postSubmittedAwaitingApproval": "تم إرسال منشورك وهو بانتظار موافقة المدير. سيظهر على الصفحة الرئيسية بعد الموافقة.",
+  "maximumRecordingTimeReached": "تم الوصول لأقصى مدة تسجيل وهي دقيقة واحدة.",
+  "textOrVoiceRequired": "يرجى تقديم رسالة نصية أو صوتية",
+  "mustBeLoggedIn": "يجب تسجيل الدخول للنشر",
+  "microphonePermissionRequired": "إذن الميكروفون مطلوب للرسائل الصوتية",
+  "failedToCreatePost": "فشل في إنشاء المنشور",
+  "audioFileTooLarge": "الملف الصوتي كبير جداً. يرجى تسجيل رسالة أقصر.",
+  "bothPermissionsRequired": "كلا إذني الميكروفون والتخزين مطلوبان",
+  "failedToInitializeRecording": "فشل في تهيئة التسجيل",
+  "failedToStartRecording": "فشل في بدء التسجيل",
+  "failedToStopRecording": "فشل في إيقاف التسجيل",
+  "failedToPlayRecording": "فشل في تشغيل التسجيل",
+  "voiceRecorderNotInitialized": "مسجل الصوت غير مهيأ. يرجى فحص أذونات الميكروفون.",
+  "failedToLoadProfileData": "فشل في تحميل بيانات الملف الشخصي",
+  "placeSearchFailed": "فشل في البحث عن المكان",
+  "failedToSearchPlaces": "فشل في البحث عن الأماكن",
+  
+  "plumber": "سباك",
+  "electrician": "كهربائي",
+  "painter": "نقاش",
+  "carpenter": "نجار",
+  "mason": "بناء",
+  "tiler": "بلاطي",
+  "gardener": "بستاني",
+  "cleaner": "منظف",
+  "roofer": "سقاف",
+  "welder": "حداد",
+  "windowInstaller": "مركب النوافذ",
+  "hvacTechnician": "فني تكييف",
+  "flooringInstaller": "مركب الأرضيات",
+  "landscaper": "منسق حدائق",
+  "other": "أخرى",
+  
+  "loadingMessages": "جاري تحميل الرسائل...",
+  "typeAMessage": "اكتب رسالة...",
+  "recordingAudio": "جاري تسجيل الصوت...",
+  "audioReadyToSend": "الصوت جاهز للإرسال",
+  "sendingAudio": "جاري إرسال الصوت...",
+  "sendingImage": "جاري إرسال الصورة...",
+  "audioMessage": "رسالة صوتية",
+  "image": "صورة",
+  "failedToLoadImage": "فشل في تحميل الصورة",
+  "cannotSendMessage": "لا يمكن إرسال الرسالة: محادثة غير صحيحة",
+  "cannotSendImage": "لا يمكن إرسال الصورة: محادثة غير صحيحة",
+  "errorSendingMessage": "خطأ في إرسال الرسالة",
+  "errorSendingAudio": "خطأ في إرسال الرسالة الصوتية",
+  "errorSelectingImage": "خطأ في اختيار الصورة",
+  "errorSendingImage": "خطأ في إرسال الصورة",
+  "cannotViewProfile": "لا يمكن عرض الملف الشخصي: معرف المستخدم غير متوفر",
+  "couldNotOpenConversation": "لا يمكن فتح المحادثة",
+  "errorLoadingConversations": "خطأ في تحميل المحادثات. يرجى المحاولة مرة أخرى.",
+  "today": "اليوم",
+  "yesterday": "أمس",
+  "user": "مستخدم",
+  "viewRelatedPost": "عرض المنشور المرتبط",
+  "clearChat": "مسح المحادثة",
+  "clearChatConfirmation": "هل أنت متأكد أنك تريد مسح هذه المحادثة؟ لا يمكن التراجع عن هذا الإجراء.",
+  "requestWithActivity": "طلب: {activity}",
+  "@requestWithActivity": {
+    "description": "نوع المنشور طلب مع النشاط",
+    "placeholders": {
+      "activity": {
+        "type": "String",
+        "example": "سباك"
+      }
+    }
+  },
+  "offerWithActivity": "عرض: {activity}",
+  "@offerWithActivity": {
+    "description": "نوع المنشور عرض مع النشاط",
+    "placeholders": {
+      "activity": {
+        "type": "String",
+        "example": "سباك"
+      }
+    }
+  },
+  "viewPost": "عرض المنشور",
+  "messageLabel": "الرسالة:",
+  "audioMessageLabel": "الرسالة الصوتية:",
+  "close": "إغلاق",
+  
+  "yourLocation": "موقعك: {location}",
+  "@yourLocation": {
+    "description": "عرض الموقع الحالي للمستخدم",
+    "placeholders": {
+      "location": {
+        "type": "String",
+        "example": "الدار البيضاء"
+      }
+    }
+  },
+  "all": "الكل",
+  "woodWorker": "نجار خشب",
+  "locationServicesDisabled": "خدمات الموقع معطلة",
+  "locationPermissionDenied": "تم رفض إذن الموقع",
+  "locationPermissionsPermanentlyDenied": "أذونات الموقع مرفوضة نهائياً",
+  "failedToGetLocation": "فشل في الحصول على الموقع",
+  "gotLocation": "تم الحصول على الموقع",
+  "cannotPrecalculateDistances": "لا يمكن حساب المسافات مسبقاً - مدينة المستخدم الأصلية غير متوفرة",
+  "userHomeCityFetched": "تم جلب مدينة المستخدم الأصلية",
+  "kmDistance": "{distance} كم",
+  "@kmDistance": {
+    "description": "المسافة بالكيلومترات",
+    "placeholders": {
+      "distance": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "waitingForLocation": "{distance}كم (في انتظار الموقع...)",
+  "@waitingForLocation": {
+    "description": "فلتر المسافة في انتظار الموقع",
+    "placeholders": {
+      "distance": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "selectCity": "اختر المدينة",
+  
+  "like": "إعجاب",
+  "comment": "تعليق",
+  "mention": "إشارة",
+  "system": "النظام", 
+  "sendTestNotification": "إرسال إشعار تجريبي",
+  "sendingTestNotification": "جاري إرسال الإشعار التجريبي...",
+  "testNotificationSent": "تم إرسال الإشعار التجريبي! تحقق من لوحة الإشعارات.",
+  "failedToSendTestNotification": "فشل في إرسال الإشعار التجريبي",
+  "failedToLoadNotifications": "فشل في تحميل الإشعارات",
+  
+  "posts": "المنشورات",
+  "followers": "المتابعون",
+  "following": "المتابَعون",
+  "reviews": "التقييمات", 
+  "bio": "السيرة الذاتية",
+  "voiceBio": "السيرة الصوتية",
+  "noPostsYet": "لا توجد منشورات بعد",
+  "shareFirstPost": "شارك منشورك الأول مع المجتمع",
+  "userHasNoPosts": "لم ينشر هذا المستخدم أي شيء بعد",
+  "createPost": "إنشاء منشور",
+  "noReviewsYet": "لا توجد تقييمات بعد",
+  "noReviewsReceived": "لم تتلق أي تقييمات بعد",
+  "userHasNoReviews": "لم يتلق هذا المستخدم أي تقييمات بعد",
+  "logout": "تسجيل الخروج",
+  "areYouSureLogout": "هل أنت متأكد من أنك تريد تسجيل الخروج؟",
+  "adminDashboard": "لوحة تحكم المدير",
+  "voiceMessage": "رسالة صوتية",
+  "justNow": "الآن",
+  "minutesAgo": "منذ {minutes} دقيقة",
+  "@minutesAgo": {
+    "description": "الطابع الزمني بالدقائق",
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "hoursAgo": "منذ {hours} ساعة",
+  "@hoursAgo": {
+    "description": "الطابع الزمني بالساعات",
+    "placeholders": {
+      "hours": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "daysAgo": "منذ {days} يوم",
+  "@daysAgo": {
+    "description": "الطابع الزمني بالأيام",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "you": "أنت",
+  "voiceReview": "تقييم صوتي",
+  "duration": "المدة: {duration}",
+  "@duration": {
+    "description": "عرض مدة الصوت",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "02:30"
+      }
+    }
+  },
+  "reviewsCount": "{count} تقييم",
+  "@reviewsCount": {
+    "description": "عدد التقييمات",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "unknownDate": "تاريخ غير معروف",
+  "anonymous": "مجهول",
+  "unknownUser": "مستخدم غير معروف",
+  "blockUser": "حظر المستخدم",
+  "reportUser": "الإبلاغ عن المستخدم",
+  "shareProfile": "مشاركة الملف الشخصي",
+  
+  "pending": "في الانتظار",
+  "approved": "موافق عليها",
+  "rejected": "مرفوضة",
+  "noPendingPostsToReview": "لا توجد منشورات في انتظار المراجعة",
+  "noApprovedPosts": "لا توجد منشورات موافق عليها",
+  "noRejectedPosts": "لا توجد منشورات مرفوضة",
+  "refresh": "تحديث",
+  "approve": "موافقة",
+  "reject": "رفض",
+  "moveToApproved": "نقل إلى الموافق عليها",
+  "moveToRejected": "نقل إلى المرفوضة",
+  "postApprovedSuccess": "تمت الموافقة على المنشور وهو مرئي الآن على الصفحة الرئيسية",
+  "postRejectedSuccess": "تم رفض المنشور وإزالته من الصفحة الرئيسية",
+  "errorApprovingPost": "خطأ في الموافقة على المنشور",
+  "errorRejectingPost": "خطأ في رفض المنشور"
+}

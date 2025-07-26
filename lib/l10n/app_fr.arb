@@ -1,0 +1,383 @@
+{
+  "@@locale": "fr",
+  "appTitle": "Achno",
+  "hello": "Bonjour le monde",
+  "settings": "Paramètres",
+  "darkMode": "Mode sombre",
+  "language": "Langue",
+  "english": "Anglais",
+  "arabic": "Arabe",
+  "french": "Français",
+  
+  "notifications": "Notifications",
+  "notificationsAll": "Tous",
+  "notificationsMessages": "Messages",
+  "notificationsActivity": "Activité",
+  "notificationsSystem": "Système",
+  "notificationEmpty": "Pas de notifications",
+  "notificationEmptyMessage": "Vous êtes à jour !",
+  "markAsRead": "Marquer comme lu",
+  "markAsUnread": "Marquer comme non lu",
+  "deleteNotification": "Supprimer la notification",
+  "viewProfile": "Voir le profil",
+  "markAllAsRead": "Tout marquer comme lu",
+  "clearAllNotifications": "Effacer toutes les notifications",
+  "clearAllConfirmation": "Êtes-vous sûr de vouloir supprimer toutes les notifications ? Cette action ne peut pas être annulée.",
+  "cancel": "Annuler",
+  "clearAll": "Tout effacer",
+  "notificationSettings": "Paramètres de notification",
+  "follow": "Suivre",
+  "messages": "Messages",
+  "search": "Rechercher",
+  "noMessages": "Pas encore de messages",
+  "startConversation": "Commencer une conversation avec quelqu'un",
+  "newMessage": "Nouveau Message",
+  
+  "errorSharingPost": "Échec du partage de la publication",
+  "errorLikePost": "Échec de la mise à jour du j'aime",
+  "activeFilters": "Filtres actifs",
+  "messageToUser": "Message à {userName}",
+  "@messageToUser": {
+    "description": "Titre de la boîte de dialogue pour envoyer un message à un utilisateur",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "John Doe"
+      }
+    }
+  },
+  "typeYourMessage": "Tapez votre message",
+  "send": "Envoyer",
+  "messageSent": "Message envoyé avec succès",
+  "respond": "Répondre",
+  "share": "Partager",
+  "message": "Message",
+  "responses": "réponses",
+  "filters": "Filtres",
+  "postType": "Type de publication",
+  "request": "Demande",
+  "offer": "Offre",
+  "city": "Ville",
+  "activity": "Activité",
+  "clearFilters": "Effacer les filtres",
+  "apply": "Appliquer",
+  "noPosts": "Aucune publication disponible",
+  "createFirstPost": "Soyez le premier à créer une publication !",
+  "errorLoadingPosts": "Erreur lors du chargement des publications",
+  "pleaseRetry": "Veuillez réessayer plus tard",
+  "retry": "Réessayer",
+  "noMatchingResults": "Aucun résultat correspondant",
+  "tryDifferentFilters": "Essayez différentes options de filtrage",
+  "addPost": "Ajouter un post",
+  "messageHint": "Écrivez votre message...",
+  "cityHint": "Sélectionner la ville",
+  "activityLabel": "Activité",
+  "recordVoice": "Enregistrer un message vocal",
+  "postButtonLabel": "Publier",
+  "playingAudioMessage": "Lecture du message audio...",
+  "tapToPlayAudio": "Appuyez pour lire le message audio",
+  
+  "distance": "Distance",
+  "whatAreYouLookingFor": "Que recherchez-vous ?",
+  "yourLocation": "Votre emplacement : {location}",
+  "@yourLocation": {
+    "description": "Affichage de l'emplacement actuel de l'utilisateur",
+    "placeholders": {
+      "location": {
+        "type": "String",
+        "example": "Casablanca"
+      }
+    }
+  },
+  "all": "Tous",
+  "woodWorker": "Menuisier",
+  "locationServicesDisabled": "Les services de localisation sont désactivés",
+  "locationPermissionDenied": "Autorisation de localisation refusée",
+  "locationPermissionsPermanentlyDenied": "Les autorisations de localisation sont définitivement refusées",
+  "failedToGetLocation": "Échec de l'obtention de la localisation",
+  "gotLocation": "Localisation obtenue",
+  "cannotPrecalculateDistances": "Impossible de précalculer les distances - la ville d'origine de l'utilisateur n'est pas disponible",
+  "userHomeCityFetched": "Ville d'origine de l'utilisateur récupérée",
+  "kmDistance": "{distance} km",
+  "@kmDistance": {
+    "description": "Distance en kilomètres",
+    "placeholders": {
+      "distance": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "waitingForLocation": "{distance}km (en attente de localisation...)",
+  "@waitingForLocation": {
+    "description": "Filtre de distance en attente de localisation",
+    "placeholders": {
+      "distance": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "selectCity": "Sélectionner la ville",
+  
+  "password": "Mot de passe",
+  "pleaseEnterPassword": "Veuillez saisir un mot de passe",
+  "passwordMinLength": "Le mot de passe doit contenir au moins 6 caractères",
+  "confirmPassword": "Confirmer le mot de passe",
+  "pleaseConfirmPassword": "Veuillez confirmer votre mot de passe",
+  "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+  "fullName": "Nom complet",
+  "pleaseEnterName": "Veuillez saisir votre nom complet",
+  "phoneNumber": "Numéro de téléphone",
+  "pleaseEnterPhone": "Veuillez saisir votre numéro de téléphone",
+  "invalidPhoneNumber": "Veuillez saisir un numéro de téléphone valide",
+  "preferredLanguage": "Langue préférée",
+  "iAm": "Je suis un(e):",
+  "client": "Client",
+  "professional": "Professionnel",
+  "chooseProfession": "Choisissez votre profession:",
+  "selectOtherActivity": "Sélectionner une autre activité",
+  "completeRegistration": "Terminer l'inscription",
+  "continue_": "Continuer",
+  "alreadyMember": "Déjà membre?",
+  "signIn": "Se connecter",
+  "createAccount": "Créer un compte",
+  "success": "Succès !",
+  "accountCreated": "Compte créé avec succès",
+  "continueToApp": "Continuer vers l'application",
+  
+  "editProfile": "Modifier le Profil",
+  "textBio": "Biographie Textuelle (Optionnel)",
+  "audioBio": "Biographie Audio",
+  "recordAudioBio": "Enregistrer une Biographie Audio",
+  "audioBioAvailable": "Biographie Audio Disponible",
+  "recordNewAudio": "Enregistrer un Nouveau Audio",
+  "audioBioDescription": "Enregistrez une courte biographie audio (jusqu'à 30 secondes)",
+  "recording": "Enregistrement: {duration}",
+  "@recording": {
+    "description": "Affichage de la durée d'enregistrement",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "00:15"
+      }
+    }
+  },
+  "stopRecording": "Arrêter l'Enregistrement",
+  "phoneCannotBeChanged": "Le numéro de téléphone ne peut pas être modifié",
+  "phone": "Téléphone",
+  "professionalActivity": "Votre Activité Professionnelle",
+  "selectImageSource": "Sélectionner la Source de l'Image",
+  "camera": "Caméra",
+  "gallery": "Galerie",
+  "permissionRequired": "Autorisation Requise",
+  "mediaPermissionMessage": "Cette fonctionnalité nécessite l'autorisation d'accéder à vos médias. Veuillez l'activer dans les paramètres de l'application.",
+  "openSettings": "Ouvrir les Paramètres",
+  "saveChanges": "Enregistrer les Modifications",
+  "profileUpdated": "Profil mis à jour avec succès",
+  "pleaseEnterCity": "Veuillez saisir votre ville",
+  
+  "postDuration": "Durée de publication",
+  "unlimited": "Illimité",
+  "hours48": "48 heures",
+  "days7": "7 jours",
+  "days30": "30 jours",
+  "maxOneMinute": "Max 1 minute",
+  "allowMicPermission": "Autoriser",
+  "microphoneAccessNeeded": "Accès au microphone nécessaire",
+  "failedToInitializeRecorder": "Échec de l'initialisation de l'enregistreur",
+  "tryAgain": "Réessayer",
+  "tapToRecord": "Appuyez pour enregistrer",
+  "tapToStop": "Appuyez pour arrêter",
+  "audioRecording": "Enregistrement audio",
+  "otherActivities": "Autres activités",
+  "typeToSearch": "Tapez pour rechercher",
+  "cityRequired": "Ville requise",
+  "addOptionalDetails": "Ajouter des détails optionnels (non requis)",
+  "postSuccessfullySubmitted": "Publication soumise avec succès",
+  "postSubmittedAwaitingApproval": "Votre publication a été soumise et attend l'approbation de l'administrateur. Elle apparaîtra sur la page d'accueil une fois approuvée.",
+  "maximumRecordingTimeReached": "Durée d'enregistrement maximale de 1 minute atteinte.",
+  "textOrVoiceRequired": "Veuillez fournir un message texte ou vocal",
+  "mustBeLoggedIn": "Vous devez être connecté pour publier",
+  "microphonePermissionRequired": "L'autorisation du microphone est requise pour les messages vocaux",
+  "failedToCreatePost": "Échec de la création de la publication",
+  "audioFileTooLarge": "Fichier audio trop volumineux. Veuillez enregistrer un message plus court.",
+  "bothPermissionsRequired": "Les autorisations microphone et stockage sont toutes deux requises",
+  "failedToInitializeRecording": "Échec de l'initialisation de l'enregistrement",
+  "failedToStartRecording": "Échec du démarrage de l'enregistrement",
+  "failedToStopRecording": "Échec de l'arrêt de l'enregistrement",
+  "failedToPlayRecording": "Échec de la lecture de l'enregistrement",
+  "voiceRecorderNotInitialized": "L'enregistreur vocal n'est pas initialisé. Veuillez vérifier les autorisations du microphone.",
+  "failedToLoadProfileData": "Échec du chargement des données de profil",
+  "placeSearchFailed": "Échec de la recherche de lieu",
+  "failedToSearchPlaces": "Échec de la recherche de lieux",
+  
+  "plumber": "Plombier",
+  "electrician": "Électricien",
+  "painter": "Peintre", 
+  "carpenter": "Charpentier",
+  "mason": "Maçon",
+  "tiler": "Carreleur",
+  "gardener": "Jardinier",
+  "cleaner": "Nettoyeur",
+  "roofer": "Couvreur",
+  "welder": "Soudeur",
+  "windowInstaller": "Installateur de fenêtres",
+  "hvacTechnician": "Technicien CVC",
+  "flooringInstaller": "Installateur de sols",
+  "landscaper": "Paysagiste",
+  "other": "Autre",
+  
+  "loadingMessages": "Chargement des messages...",
+  "typeAMessage": "Tapez un message...",
+  "recordingAudio": "Enregistrement audio...",
+  "audioReadyToSend": "Audio prêt à envoyer",
+  "sendingAudio": "Envoi de l'audio...",
+  "sendingImage": "Envoi de l'image...",
+  "audioMessage": "Message audio",
+  "image": "Image",
+  "failedToLoadImage": "Échec du chargement de l'image",
+  "cannotSendMessage": "Impossible d'envoyer le message : Conversation invalide",
+  "cannotSendImage": "Impossible d'envoyer l'image : Conversation invalide",
+  "errorSendingMessage": "Erreur lors de l'envoi du message",
+  "errorSendingAudio": "Erreur lors de l'envoi du message audio",
+  "errorSelectingImage": "Erreur lors de la sélection de l'image",
+  "errorSendingImage": "Erreur lors de l'envoi de l'image",
+  "cannotViewProfile": "Impossible de voir le profil : ID utilisateur non disponible",
+  "couldNotOpenConversation": "Impossible d'ouvrir la conversation",
+  "errorLoadingConversations": "Erreur lors du chargement des conversations. Veuillez réessayer.",
+  "today": "Aujourd'hui",
+  "yesterday": "Hier",
+  "user": "Utilisateur",
+  "viewRelatedPost": "Voir la publication associée",
+  "clearChat": "Effacer la discussion",
+  "clearChatConfirmation": "Êtes-vous sûr de vouloir effacer cette discussion ? Cette action ne peut pas être annulée.",
+  "requestWithActivity": "Demande : {activity}",
+  "@requestWithActivity": {
+    "description": "Type de publication demande avec activité",
+    "placeholders": {
+      "activity": {
+        "type": "String",
+        "example": "Plombier"
+      }
+    }
+  },
+  "offerWithActivity": "Offre : {activity}",
+  "@offerWithActivity": {
+    "description": "Type de publication offre avec activité",
+    "placeholders": {
+      "activity": {
+        "type": "String",
+        "example": "Plombier"
+      }
+    }
+  },
+  "viewPost": "Voir la publication",
+  "messageLabel": "Message :",
+  "audioMessageLabel": "Message audio :",
+  "close": "Fermer",
+  
+  "like": "J'aime",
+  "comment": "Commentaire",
+  "mention": "Mention", 
+  "system": "Système",
+  "sendTestNotification": "Envoyer une notification de test",
+  "sendingTestNotification": "Envoi de la notification de test...",
+  "testNotificationSent": "Notification de test envoyée ! Vérifiez votre panneau de notifications.",
+  "failedToSendTestNotification": "Échec de l'envoi de la notification de test",
+  "failedToLoadNotifications": "Échec du chargement des notifications",
+  
+  "posts": "Publications",
+  "followers": "Abonnés",
+  "following": "Abonnements", 
+  "reviews": "Avis",
+  "bio": "Biographie",
+  "voiceBio": "Bio Vocale",
+  "noPostsYet": "Aucune publication pour le moment",
+  "shareFirstPost": "Partagez votre première publication avec la communauté",
+  "userHasNoPosts": "Cet utilisateur n'a encore rien publié",
+  "createPost": "Créer une Publication",
+  "noReviewsYet": "Aucun avis pour le moment",
+  "noReviewsReceived": "Vous n'avez encore reçu aucun avis",
+  "userHasNoReviews": "Cet utilisateur n'a encore reçu aucun avis",
+  "logout": "Déconnexion",
+  "areYouSureLogout": "Êtes-vous sûr de vouloir vous déconnecter ?",
+  "adminDashboard": "Tableau de Bord Admin",
+  "professional": "Professionnel",
+  "voiceMessage": "Message vocal",
+  "justNow": "À l'instant",
+  "minutesAgo": "Il y a {minutes}m",
+  "@minutesAgo": {
+    "description": "Horodatage en minutes",
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "hoursAgo": "Il y a {hours}h",
+  "@hoursAgo": {
+    "description": "Horodatage en heures",
+    "placeholders": {
+      "hours": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "daysAgo": "Il y a {days}j",
+  "@daysAgo": {
+    "description": "Horodatage en jours",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "you": "Vous",
+  "voiceReview": "Avis Vocal",
+  "duration": "Durée: {duration}",
+  "@duration": {
+    "description": "Affichage de la durée audio",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "02:30"
+      }
+    }
+  },
+  "reviewsCount": "{count} avis",
+  "@reviewsCount": {
+    "description": "Nombre d'avis",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "unknownDate": "Date inconnue",
+  "anonymous": "Anonyme",
+  "unknownUser": "Utilisateur Inconnu",
+  "blockUser": "Bloquer l'utilisateur",
+  "reportUser": "Signaler l'utilisateur",
+  "shareProfile": "Partager le profil",
+  
+  "pending": "En attente",
+  "approved": "Approuvés",
+  "rejected": "Rejetés",
+  "noPendingPostsToReview": "Aucune publication en attente de révision",
+  "noApprovedPosts": "Aucune publication approuvée",
+  "noRejectedPosts": "Aucune publication rejetée",
+  "refresh": "Actualiser",
+  "approve": "Approuver",
+  "reject": "Rejeter",
+  "moveToApproved": "Déplacer vers Approuvés",
+  "moveToRejected": "Déplacer vers Rejetés",
+  "postApprovedSuccess": "Publication approuvée et maintenant visible sur la page d'accueil",
+  "postRejectedSuccess": "Publication rejetée et supprimée de la page d'accueil",
+  "errorApprovingPost": "Erreur lors de l'approbation de la publication",
+  "errorRejectingPost": "Erreur lors du rejet de la publication"
+}

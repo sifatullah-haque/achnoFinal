@@ -1,0 +1,381 @@
+{
+  "appTitle": "Achno",
+  "hello": "Hello World",
+  "settings": "Settings",
+  "darkMode": "Dark Mode",
+  "language": "Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "french": "French",
+  "spanish": "Spanish",
+  
+  "notifications": "Notifications",
+  "notificationsAll": "All",
+  "notificationsMessages": "Messages",
+  "notificationsActivity": "Activity",
+  "notificationsSystem": "System",
+  "notificationEmpty": "No Notifications",
+  "notificationEmptyMessage": "You're all caught up!",
+  "markAsRead": "Mark as read",
+  "markAsUnread": "Mark as unread",
+  "deleteNotification": "Delete notification",
+  "viewProfile": "View profile",
+  "markAllAsRead": "Mark all as read",
+  "clearAllNotifications": "Clear all notifications",
+  "clearAllConfirmation": "Are you sure you want to delete all notifications? This action cannot be undone.",
+  "cancel": "Cancel",
+  "clearAll": "Clear All",
+  "notificationSettings": "Notification settings",
+  "follow": "Follow",
+  "messages": "Messages",
+  "search": "Search",
+  "noMessages": "No messages yet",
+  "startConversation": "Start a conversation with someone",
+  "newMessage": "New Message",
+  "addPost": "Add Post",
+  "messageHint": "Write your message...",
+  "cityHint": "Select city",
+  "activityLabel": "Activity",
+  "recordVoice": "Record voice message",
+  "postButtonLabel": "Post",
+  
+  "errorSharingPost": "Failed to share post",
+  "errorLikePost": "Failed to update like",
+  "activeFilters": "Active filters",
+  "messageToUser": "Message to {userName}",
+  "@messageToUser": {
+    "description": "Dialog title for sending message to a user",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "John Doe"
+      }
+    }
+  },
+  "typeYourMessage": "Type your message",
+  "send": "Send",
+  "messageSent": "Message sent successfully",
+  "respond": "Respond",
+  "share": "Share",
+  "message": "Message",
+  "responses": "responses",
+  "filters": "Filters",
+  "postType": "Post Type",
+  "request": "Request",
+  "offer": "Offer",
+  "city": "City",
+  "activity": "Activity",
+  "clearFilters": "Clear Filters",
+  "apply": "Apply",
+  "noPosts": "No Posts Available",
+  "createFirstPost": "Be the first one to create a post!",
+  "errorLoadingPosts": "Error Loading Posts",
+  "pleaseRetry": "Please try again later",
+  "retry": "Retry",
+  "noMatchingResults": "No Matching Results",
+  "tryDifferentFilters": "Try different filter options",
+  "playingAudioMessage": "Playing audio message...",
+  "tapToPlayAudio": "Tap to play audio message",
+  
+  "distance": "Distance",
+  "whatAreYouLookingFor": "What are you looking for?",
+  "yourLocation": "Your location: {location}",
+  "@yourLocation": {
+    "description": "User's current location display",
+    "placeholders": {
+      "location": {
+        "type": "String",
+        "example": "Casablanca"
+      }
+    }
+  },
+  "all": "All",
+  "woodWorker": "Wood Worker",
+  "locationServicesDisabled": "Location services are disabled",
+  "locationPermissionDenied": "Location permission denied",
+  "locationPermissionsPermanentlyDenied": "Location permissions are permanently denied",
+  "failedToGetLocation": "Failed to get location",
+  "gotLocation": "Got location",
+  "cannotPrecalculateDistances": "Cannot precalculate distances - user home city is not available",
+  "userHomeCityFetched": "User home city fetched",
+  "kmDistance": "{distance} km",
+  "@kmDistance": {
+    "description": "Distance in kilometers",
+    "placeholders": {
+      "distance": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "waitingForLocation": "{distance}km (waiting for location...)",
+  "@waitingForLocation": {
+    "description": "Distance filter waiting for location",
+    "placeholders": {
+      "distance": {
+        "type": "int",
+        "example": "10"
+      }
+    }
+  },
+  "selectCity": "Select City",
+  
+  "password": "Password",
+  "pleaseEnterPassword": "Please enter a password",
+  "passwordMinLength": "Password must be at least 6 characters",
+  "confirmPassword": "Confirm Password",
+  "pleaseConfirmPassword": "Please confirm your password",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "fullName": "Full Name",
+  "pleaseEnterName": "Please enter your full name",
+  "phoneNumber": "Phone Number",
+  "pleaseEnterPhone": "Please enter your phone number",
+  "invalidPhoneNumber": "Please enter a valid phone number",
+  "preferredLanguage": "Preferred Language",
+  "iAm": "I am a:",
+  "client": "Client",
+  "professional": "Professional",
+  "chooseProfession": "Choose your profession:",
+  "selectOtherActivity": "Select Other Activity",
+  "completeRegistration": "Complete Registration",
+  "continue_": "Continue",
+  "alreadyMember": "Already a member?",
+  "signIn": "Sign In",
+  "createAccount": "Create Account",
+  "success": "Success!",
+  "accountCreated": "Account created successfully",
+  "continueToApp": "Continue to App",
+  
+  "editProfile": "Edit Profile",
+  "textBio": "Text Bio (Optional)",
+  "audioBio": "Audio Bio",
+  "recordAudioBio": "Record Audio Bio",
+  "audioBioAvailable": "Audio Bio Available",
+  "recordNewAudio": "Record New Audio",
+  "audioBioDescription": "Record a short audio bio (up to 30 seconds)",
+  "recording": "Recording: {duration}",
+  "@recording": {
+    "description": "Recording duration display",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "00:15"
+      }
+    }
+  },
+  "stopRecording": "Stop Recording",
+  "phoneCannotBeChanged": "Phone number cannot be changed",
+  "phone": "Phone",
+  "professionalActivity": "Your Professional Activity",
+  "selectImageSource": "Select Image Source",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "permissionRequired": "Permission Required",
+  "mediaPermissionMessage": "This feature requires permission to access your media. Please enable it in app settings.",
+  "openSettings": "Open Settings",
+  "saveChanges": "Save Changes",
+  "profileUpdated": "Profile updated successfully",
+  "pleaseEnterCity": "Please enter your city",
+  
+  "postDuration": "Post Duration",
+  "unlimited": "Unlimited",
+  "hours48": "48 Hours",
+  "days7": "7 Days",
+  "days30": "30 Days",
+  "maxOneMinute": "Max 1 minute",
+  "allowMicPermission": "Allow",
+  "microphoneAccessNeeded": "Microphone access needed",
+  "failedToInitializeRecorder": "Failed to initialize recorder",
+  "tryAgain": "Try Again",
+  "tapToRecord": "Tap to record",
+  "tapToStop": "Tap to stop",
+  "audioRecording": "Audio recording",
+  "otherActivities": "Other Activities",
+  "typeToSearch": "Type to search",
+  "cityRequired": "City required",
+  "addOptionalDetails": "Add optional details (not required)",
+  "postSuccessfullySubmitted": "Post Successfully Submitted",
+  "postSubmittedAwaitingApproval": "Your post has been submitted and is awaiting admin approval. It will appear on the homepage once approved.",
+  "maximumRecordingTimeReached": "Maximum recording time of 1 minute reached.",
+  "textOrVoiceRequired": "Please provide either text or voice message",
+  "mustBeLoggedIn": "You must be logged in to post",
+  "microphonePermissionRequired": "Microphone permission is required for voice messages",
+  "failedToCreatePost": "Failed to create post",
+  "audioFileTooLarge": "Audio file too large. Please record a shorter message.",
+  "bothPermissionsRequired": "Both microphone and storage permissions are required",
+  "failedToInitializeRecording": "Failed to initialize recording",
+  "failedToStartRecording": "Failed to start recording",
+  "failedToStopRecording": "Failed to stop recording",
+  "failedToPlayRecording": "Failed to play recording",
+  "voiceRecorderNotInitialized": "Voice recorder is not initialized. Please check microphone permissions.",
+  "failedToLoadProfileData": "Failed to load profile data",
+  "placeSearchFailed": "Place search failed",
+  "failedToSearchPlaces": "Failed to search places",
+  
+  "plumber": "Plumber",
+  "electrician": "Electrician", 
+  "painter": "Painter",
+  "carpenter": "Carpenter",
+  "mason": "Mason",
+  "tiler": "Tiler",
+  "gardener": "Gardener",
+  "cleaner": "Cleaner",
+  "roofer": "Roofer",
+  "welder": "Welder",
+  "windowInstaller": "Window Installer",
+  "hvacTechnician": "HVAC Technician",
+  "flooringInstaller": "Flooring Installer",
+  "landscaper": "Landscaper",
+  "other": "Other",
+  
+  "loadingMessages": "Loading messages...",
+  "typeAMessage": "Type a message...",
+  "recordingAudio": "Recording audio...",
+  "audioReadyToSend": "Audio ready to send",
+  "sendingAudio": "Sending audio...",
+  "sendingImage": "Sending image...",
+  "audioMessage": "Audio message",
+  "image": "Image",
+  "failedToLoadImage": "Failed to load image",
+  "cannotSendMessage": "Cannot send message: Invalid conversation",
+  "cannotSendImage": "Cannot send image: Invalid conversation",
+  "errorSendingMessage": "Error sending message",
+  "errorSendingAudio": "Error sending audio message",
+  "errorSelectingImage": "Error selecting image",
+  "errorSendingImage": "Error sending image",
+  "cannotViewProfile": "Cannot view profile: User ID not available",
+  "couldNotOpenConversation": "Could not open conversation",
+  "errorLoadingConversations": "Error loading conversations. Please try again.",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "user": "User",
+  "viewRelatedPost": "View Related Post",
+  "clearChat": "Clear Chat",
+  "clearChatConfirmation": "Are you sure you want to clear this chat? This action cannot be undone.",
+  "requestWithActivity": "Request: {activity}",
+  "@requestWithActivity": {
+    "description": "Request post type with activity",
+    "placeholders": {
+      "activity": {
+        "type": "String",
+        "example": "Plumber"
+      }
+    }
+  },
+  "offerWithActivity": "Offer: {activity}",
+  "@offerWithActivity": {
+    "description": "Offer post type with activity",
+    "placeholders": {
+      "activity": {
+        "type": "String",
+        "example": "Plumber"
+      }
+    }
+  },
+  "viewPost": "View Post",
+  "messageLabel": "Message:",
+  "audioMessageLabel": "Audio Message:",
+  "close": "Close",
+  
+  "like": "Like",
+  "comment": "Comment", 
+  "mention": "Mention",
+  "system": "System",
+  "sendTestNotification": "Send Test Notification",
+  "sendingTestNotification": "Sending test notification...",
+  "testNotificationSent": "Test notification sent! Check your notification panel.",
+  "failedToSendTestNotification": "Failed to send test notification",
+  "failedToLoadNotifications": "Failed to load notifications",
+  
+  "posts": "Posts",
+  "followers": "Followers", 
+  "following": "Following",
+  "reviews": "Reviews",
+  "bio": "Bio",
+  "voiceBio": "Voice Bio",
+  "noPostsYet": "No posts yet",
+  "shareFirstPost": "Share your first post with the community",
+  "userHasNoPosts": "This user hasn't posted anything yet",
+  "createPost": "Create Post",
+  "noReviewsYet": "No reviews yet",
+  "noReviewsReceived": "You haven't received any reviews yet",
+  "userHasNoReviews": "This user hasn't received any reviews yet",
+  "logout": "Logout",
+  "areYouSureLogout": "Are you sure you want to logout?",
+  "adminDashboard": "Admin Dashboard",
+  "pending": "Pending",
+  "approved": "Approved",
+  "rejected": "Rejected",
+  "noPendingPostsToReview": "No pending posts to review",
+  "noApprovedPosts": "No approved posts",
+  "noRejectedPosts": "No rejected posts",
+  "refresh": "Refresh",
+  "approve": "Approve",
+  "reject": "Reject",
+  "moveToApproved": "Move to Approved",
+  "moveToRejected": "Move to Rejected",
+  "postApprovedSuccess": "Post approved and now visible on homepage",
+  "postRejectedSuccess": "Post rejected and removed from homepage",
+  "errorApprovingPost": "Error approving post",
+  "errorRejectingPost": "Error rejecting post",
+  "voiceMessage": "Voice message",
+  "justNow": "Just now",
+  "minutesAgo": "{minutes}m ago",
+  "@minutesAgo": {
+    "description": "Minutes ago timestamp",
+    "placeholders": {
+      "minutes": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "hoursAgo": "{hours}h ago",
+  "@hoursAgo": {
+    "description": "Hours ago timestamp", 
+    "placeholders": {
+      "hours": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "daysAgo": "{days}d ago",
+  "@daysAgo": {
+    "description": "Days ago timestamp",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "you": "You",
+  "voiceReview": "Voice Review",
+  "duration": "Duration: {duration}",
+  "@duration": {
+    "description": "Audio duration display",
+    "placeholders": {
+      "duration": {
+        "type": "String",
+        "example": "02:30"
+      }
+    }
+  },
+  "reviewsCount": "{count} reviews",
+  "@reviewsCount": {
+    "description": "Number of reviews",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "5"
+      }
+    }
+  },
+  "unknownDate": "Unknown date",
+  "anonymous": "Anonymous",
+  "unknownUser": "Unknown User",
+  "blockUser": "Block user",
+  "reportUser": "Report user", 
+  "shareProfile": "Share profile"
+}

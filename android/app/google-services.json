@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "859544837598",
+    "project_id": "achno-app",
+    "storage_bucket": "achno-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859544837598:android:ecf4b85ad85f399b80114f",
+        "android_client_info": {
+          "package_name": "com.example.achno"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0gr5oWps98m4utkLB4HKmEt8qe8AzFto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
