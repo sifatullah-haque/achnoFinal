@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:achno/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'homepage_controller.dart';
+import 'package:achno/config/theme.dart';
 
 class HomepageStates {
   static Widget buildEmptyState(BuildContext context,
@@ -138,8 +139,31 @@ class HomepageStates {
   }
 
   static Widget buildLoadingState() {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const CircularProgressIndicator(
+            color: AppTheme.primaryColor,
+          ),
+          SizedBox(height: 16.h),
+          Text(
+            'Loading posts...',
+            style: TextStyle(
+              color: AppTheme.textSecondaryColor,
+              fontSize: 14.sp,
+            ),
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            'This may take a few seconds',
+            style: TextStyle(
+              color: AppTheme.textSecondaryColor.withOpacity(0.7),
+              fontSize: 12.sp,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

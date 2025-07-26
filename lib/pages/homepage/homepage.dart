@@ -23,12 +23,13 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> _initializeController() async {
-    await _controller.initAudioPlayer();
+    // Initialize audio player in background
+    _controller.initAudioPlayer();
+
+    // Get location in background (non-blocking)
     _controller.getCurrentLocationWithoutLocalization();
 
-    // Wait a bit for the widget to be fully mounted before fetching posts
-    await Future.delayed(const Duration(milliseconds: 100));
-
+    // Fetch posts immediately without delay
     if (mounted) {
       _controller.fetchPosts(context);
       // Store context reference to avoid async gap issues

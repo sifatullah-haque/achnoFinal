@@ -28,6 +28,12 @@ class HomepageController extends ChangeNotifier {
   final List<int> _distanceOptions = [5, 10, 25];
   final int _defaultDistanceFilter = 10;
 
+  // Cache variables
+  DateTime? _lastFetchTime;
+  static const Duration _cacheValidDuration = Duration(minutes: 2);
+  bool _isInitialized = false;
+  List<Post> _cachedPosts = [];
+
   // Audio state
   String _currentlyPlayingId = '';
   bool _isPlaying = false;
@@ -356,54 +362,162 @@ class HomepageController extends ChangeNotifier {
   Future<void> fetchPosts([BuildContext? context]) async {
     _isLoading = true;
     _hasError = false;
+    _errorMessage = '';
     notifyListeners();
 
     try {
-      // Try to fetch user city, but don't let it block the posts loading
-      if (_userHomeCity == null) {
-        try {
-          // Add timeout to prevent infinite loading
-          await fetchUserCity(context).timeout(
-            const Duration(seconds: 5),
-            onTimeout: () {
-              debugPrint('User city fetch timed out, continuing without it');
-              return;
-            },
-          );
-        } catch (e) {
-          debugPrint('Failed to fetch user city, continuing without it: $e');
-        }
+      debugPrint('Starting to fetch posts...');
+
+      // Check if posts are cached and valid
+      if (_isInitialized &&
+          _lastFetchTime != null &&
+          DateTime.now().difference(_lastFetchTime!) < _cacheValidDuration &&
+          _cachedPosts.isNotEmpty) {
+        debugPrint('Using cached posts.');
+        _posts.clear();
+        _posts.addAll(_cachedPosts);
+        _isLoading = false;
+        debugPrint(
+            'Posts loaded successfully from cache. Loading state set to false. Posts count: ${_posts.length}');
+        notifyListeners();
+        return;
       }
 
+      // Fetch posts first - don't wait for user city
       final posts = await _postService.getPosts();
       debugPrint('Fetched ${posts.length} approved posts for homepage');
-      _debugPostsData(posts);
-      _updateCityFiltersList(posts);
 
-      // Always show posts even if user city is not available
-      _posts.clear();
-      _posts.addAll(posts);
-      _isLoading = false;
-      debugPrint(
-          'Posts loaded successfully. Loading state set to false. Posts count: ${_posts.length}');
-      notifyListeners();
+      if (posts.isNotEmpty) {
+        _debugPostsData(posts);
+        _updateCityFiltersList(posts);
 
-      // Try to precalculate distances if user city is available
-      if (_userHomeCity != null && _userHomeCity!.isNotEmpty) {
-        await _precalculateDistances(posts);
-      } else {
+        // Update posts immediately
+        _posts.clear();
+        _posts.addAll(posts);
+        // Cache the posts
+        _cachedPosts = List.from(posts);
+        _lastFetchTime = DateTime.now();
+        _isInitialized = true;
+        _isLoading = false;
         debugPrint(
-            'Cannot precalculate distances - user home city is not available');
+            'Posts loaded successfully. Loading state set to false. Posts count: ${_posts.length}');
+        notifyListeners();
+      } else {
+        // No posts found
+        _posts.clear();
+        _isLoading = false;
+        debugPrint('No posts found. Loading state set to false.');
+        notifyListeners();
+      }
+
+      // Try to fetch user city in background (non-blocking)
+      if (_userHomeCity == null) {
+        _fetchUserCityInBackground(context);
+      }
+
+      // Try to precalculate distances in background if user city is available
+      if (_userHomeCity != null &&
+          _userHomeCity!.isNotEmpty &&
+          posts.isNotEmpty) {
+        _precalculateDistancesInBackground(posts);
       }
     } catch (e) {
       _isLoading = false;
       _hasError = true;
       _errorMessage = 'Failed to load posts: ${e.toString()}';
+      debugPrint('Error fetching posts: $e');
+      notifyListeners();
+    }
+  }
+
+  // Background method to fetch user city without blocking the UI
+  Future<void> _fetchUserCityInBackground([BuildContext? context]) async {
+    try {
+      await fetchUserCity(context);
+      debugPrint('User city fetched in background: $_userHomeCity');
+
+      // If we now have user city and posts, try to precalculate distances
+      if (_userHomeCity != null &&
+          _userHomeCity!.isNotEmpty &&
+          _posts.isNotEmpty) {
+        await _precalculateDistancesInBackground(_posts);
+      }
+    } catch (e) {
+      debugPrint('Failed to fetch user city in background: $e');
+    }
+  }
+
+  // Background method to precalculate distances without blocking the UI
+  Future<void> _precalculateDistancesInBackground(List<Post> posts) async {
+    if (_userHomeCity == null) {
+      debugPrint(
+          'Cannot precalculate distances - user home city is not available');
+      return;
+    }
+
+    _isCalculatingDistances = true;
+    notifyListeners();
+
+    try {
+      final normalizedUserCity =
+          CityMappingService.normalizeCityName(_userHomeCity!);
+      debugPrint(
+          'Precalculating distances from $normalizedUserCity to post cities...');
+
+      final uniqueCities = <String>{};
+      for (final post in posts) {
+        if (post.city.isNotEmpty) {
+          final normalizedPostCity =
+              CityMappingService.normalizeCityName(post.city);
+          if (normalizedPostCity != normalizedUserCity) {
+            uniqueCities.add(normalizedPostCity);
+          }
+        }
+      }
+
+      debugPrint(
+          'Found ${uniqueCities.length} unique normalized cities in posts');
+
+      int calculatedCount = 0;
+      for (final city in uniqueCities) {
+        if (_distanceBetweenCities.containsKey(normalizedUserCity) &&
+            _distanceBetweenCities[normalizedUserCity]!.containsKey(city)) {
+          debugPrint(
+              'Distance from $normalizedUserCity to $city already calculated: ${_distanceBetweenCities[normalizedUserCity]![city]} km');
+          continue;
+        }
+
+        final distance = await _geocodingService.calculateDistanceBetweenCities(
+          normalizedUserCity,
+          city,
+        );
+
+        if (distance != null) {
+          _distanceBetweenCities[normalizedUserCity] ??= {};
+          _distanceBetweenCities[normalizedUserCity]![city] = distance;
+          debugPrint(
+              'Calculated distance from $normalizedUserCity to $city: $distance km');
+          calculatedCount++;
+        } else {
+          debugPrint(
+              'Failed to calculate distance between $normalizedUserCity and $city');
+        }
+      }
+
+      debugPrint('Successfully calculated $calculatedCount new distances');
+    } catch (e) {
+      debugPrint('Error precalculating distances: $e');
+    } finally {
+      _isCalculatingDistances = false;
       notifyListeners();
     }
   }
 
   Future<void> refreshPosts([BuildContext? context]) async {
+    // Clear cache to force fresh fetch
+    _lastFetchTime = null;
+    _cachedPosts.clear();
+    _isInitialized = false;
     return fetchPosts(context);
   }
 
@@ -627,71 +741,6 @@ class HomepageController extends ChangeNotifier {
   }
 
   // Distance calculation methods
-  Future<void> _precalculateDistances(List<Post> posts) async {
-    if (_userHomeCity == null) {
-      debugPrint(
-          'Cannot precalculate distances - user home city is not available');
-      return;
-    }
-
-    _isCalculatingDistances = true;
-    notifyListeners();
-
-    final normalizedUserCity =
-        CityMappingService.normalizeCityName(_userHomeCity!);
-    debugPrint(
-        'Precalculating distances from $normalizedUserCity to post cities...');
-
-    try {
-      final uniqueCities = <String>{};
-      for (final post in posts) {
-        if (post.city.isNotEmpty) {
-          final normalizedPostCity =
-              CityMappingService.normalizeCityName(post.city);
-          if (normalizedPostCity != normalizedUserCity) {
-            uniqueCities.add(normalizedPostCity);
-          }
-        }
-      }
-
-      debugPrint(
-          'Found ${uniqueCities.length} unique normalized cities in posts');
-
-      int calculatedCount = 0;
-      for (final city in uniqueCities) {
-        if (_distanceBetweenCities.containsKey(normalizedUserCity) &&
-            _distanceBetweenCities[normalizedUserCity]!.containsKey(city)) {
-          debugPrint(
-              'Distance from $normalizedUserCity to $city already calculated: ${_distanceBetweenCities[normalizedUserCity]![city]} km');
-          continue;
-        }
-
-        final distance = await _geocodingService.calculateDistanceBetweenCities(
-          normalizedUserCity,
-          city,
-        );
-
-        if (distance != null) {
-          _distanceBetweenCities[normalizedUserCity] ??= {};
-          _distanceBetweenCities[normalizedUserCity]![city] = distance;
-          debugPrint(
-              'Calculated distance from $normalizedUserCity to $city: $distance km');
-          calculatedCount++;
-        } else {
-          debugPrint(
-              'Failed to calculate distance between $normalizedUserCity and $city');
-        }
-      }
-
-      debugPrint('Successfully calculated $calculatedCount new distances');
-    } catch (e) {
-      debugPrint('Error precalculating distances: $e');
-    } finally {
-      _isCalculatingDistances = false;
-      notifyListeners();
-    }
-  }
-
   double? getDistanceBetweenCities(String postCity) {
     if (_userHomeCity == null) {
       debugPrint('Cannot get distance - user home city is null');

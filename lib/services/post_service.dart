@@ -488,85 +488,169 @@ class PostService {
   // Keep this method as the main getPosts method that only returns approved posts
   Future<List<Post>> getPosts() async {
     try {
-      // Modified query to only get approved posts
-      final QuerySnapshot snapshot = await _firestore
-          .collection('posts')
-          .where('approvalStatus',
-              isEqualTo: 'approved') // Only get approved posts
-          .orderBy('createdAt', descending: true)
-          .get();
+      debugPrint('Starting to fetch posts...');
 
-      // Process each post document and enhance with user data
-      final postsWithUserData = await Future.wait(
-        snapshot.docs.map((doc) async {
-          final data = doc.data() as Map<String, dynamic>; // Fixed cast
-          final userId = data['userId'] ?? '';
-
-          // Check if this post is liked by the current user
-          final isLiked = await hasUserLikedPost(doc.id);
-
-          // Fetch additional user information for this post
-          Map<String, dynamic> userData = {};
-          if (userId.isNotEmpty) {
-            try {
-              final userDoc =
-                  await _firestore.collection('users').doc(userId).get();
-              if (userDoc.exists) {
-                userData = userDoc.data() ?? {};
-              }
-            } catch (e) {
-              debugPrint('Error fetching user data for post ${doc.id}: $e');
-            }
-          }
-
-          // Get the user's profile picture
-          final userAvatar = userData['profilePicture'];
-          final isProfessional = userData['isProfessional'] ?? false;
-
-          // Get the user's rating information
-          double rating = 0.0;
-          int reviewCount = 0;
-
-          try {
-            // Get reviews for this user to calculate accurate rating
-            final reviewsQuery = await _firestore
-                .collection('reviews')
-                .where('targetUserId', isEqualTo: userId)
-                .get();
-
-            reviewCount = reviewsQuery.docs.length;
-
-            if (reviewCount > 0) {
-              double totalRating = 0;
-              for (var review in reviewsQuery.docs) {
-                final reviewData = review.data();
-                final reviewRating = reviewData['rating'];
-                if (reviewRating != null) {
-                  totalRating += (reviewRating as num).toDouble();
-                }
-              }
-              rating = totalRating / reviewCount;
-            }
-          } catch (e) {
-            debugPrint('Error calculating rating for user $userId: $e');
-          }
-
-          // Create enhanced Post object with additional user data
-          return Post.fromFirestore(
-            data,
-            doc.id,
-            isLiked,
-            userAvatar: userAvatar,
-            isProfessional: isProfessional,
-            rating: rating,
-            reviewCount: reviewCount,
-          );
-        }),
+      // Add timeout to prevent infinite loading
+      return await _fetchPostsOptimized().timeout(
+        const Duration(seconds: 15),
+        onTimeout: () {
+          debugPrint('Posts fetch timed out after 15 seconds');
+          return <Post>[];
+        },
       );
-
-      return postsWithUserData;
     } catch (e) {
       debugPrint('Error getting posts: $e');
+      return [];
+    }
+  }
+
+  // Optimized method to fetch posts with batch queries
+  Future<List<Post>> _fetchPostsOptimized() async {
+    try {
+      final currentUserId = _auth.currentUser?.uid;
+
+      // 1. Get all approved posts in one query
+      final QuerySnapshot postsSnapshot = await _firestore
+          .collection('posts')
+          .where('approvalStatus', isEqualTo: 'approved')
+          .orderBy('createdAt', descending: true)
+          .limit(20) // Limit to 20 posts for better performance
+          .get();
+
+      if (postsSnapshot.docs.isEmpty) {
+        debugPrint('No approved posts found');
+        return [];
+      }
+
+      debugPrint('Found ${postsSnapshot.docs.length} approved posts');
+
+      // 2. Extract all unique user IDs from posts
+      final Set<String> userIds = postsSnapshot.docs
+          .map((doc) {
+            final data = doc.data();
+            if (data is Map<String, dynamic>) {
+              return data['userId'] as String?;
+            }
+            return null;
+          })
+          .where((id) => id != null && id!.isNotEmpty)
+          .cast<String>()
+          .toSet();
+
+      debugPrint('Found ${userIds.length} unique user IDs');
+
+      // 3. Batch fetch all user data in one query
+      Map<String, Map<String, dynamic>> userDataMap = {};
+      if (userIds.isNotEmpty) {
+        try {
+          final usersSnapshot = await _firestore
+              .collection('users')
+              .where(FieldPath.documentId, whereIn: userIds.toList())
+              .get();
+
+          for (var doc in usersSnapshot.docs) {
+            userDataMap[doc.id] = doc.data();
+          }
+          debugPrint('Fetched data for ${userDataMap.length} users');
+        } catch (e) {
+          debugPrint('Error fetching user data in batch: $e');
+          // Continue without user data if batch query fails
+        }
+      }
+
+      // 4. Batch fetch user likes if user is logged in
+      Set<String> likedPostIds = {};
+      if (currentUserId != null) {
+        try {
+          final likedPostsSnapshot = await _firestore
+              .collection('users')
+              .doc(currentUserId)
+              .collection('likedPosts')
+              .get();
+          likedPostIds = likedPostsSnapshot.docs.map((doc) => doc.id).toSet();
+          debugPrint('Found ${likedPostIds.length} liked posts');
+        } catch (e) {
+          debugPrint('Error fetching liked posts: $e');
+        }
+      }
+
+      // 5. Batch fetch reviews for all users
+      Map<String, Map<String, dynamic>> userRatings = {};
+      if (userIds.isNotEmpty) {
+        try {
+          final reviewsSnapshot = await _firestore
+              .collection('reviews')
+              .where('targetUserId', whereIn: userIds.toList())
+              .get();
+
+          // Group reviews by user ID
+          for (var doc in reviewsSnapshot.docs) {
+            final data = doc.data();
+            if (data is Map<String, dynamic>) {
+              final targetUserId = data['targetUserId'] as String?;
+              if (targetUserId != null) {
+                userRatings[targetUserId] ??= {'totalRating': 0.0, 'count': 0};
+                final rating = data['rating'];
+                if (rating != null) {
+                  final ratingData = userRatings[targetUserId];
+                  if (ratingData != null) {
+                    ratingData['totalRating'] =
+                        (ratingData['totalRating'] as double) +
+                            (rating as num).toDouble();
+                    ratingData['count'] = (ratingData['count'] as int) + 1;
+                  }
+                }
+              }
+            }
+          }
+          debugPrint('Fetched reviews for ${userRatings.length} users');
+        } catch (e) {
+          debugPrint('Error fetching reviews in batch: $e');
+        }
+      }
+
+      // 6. Process posts with all the fetched data
+      final posts = postsSnapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        final userId = data['userId'] as String? ?? '';
+
+        // Get user data from the batch-fetched map
+        final userData = userDataMap[userId] ?? {};
+        final userAvatar = userData['profilePicture'];
+        final isProfessional = userData['isProfessional'] ?? false;
+
+        // Get rating data from the batch-fetched map
+        double rating = 0.0;
+        int reviewCount = 0;
+        if (userRatings.containsKey(userId)) {
+          final ratingData = userRatings[userId];
+          if (ratingData != null) {
+            reviewCount = ratingData['count'] as int? ?? 0;
+            if (reviewCount > 0) {
+              rating =
+                  (ratingData['totalRating'] as double? ?? 0.0) / reviewCount;
+            }
+          }
+        }
+
+        // Check if post is liked
+        final isLiked = likedPostIds.contains(doc.id);
+
+        return Post.fromFirestore(
+          data,
+          doc.id,
+          isLiked,
+          userAvatar: userAvatar,
+          isProfessional: isProfessional,
+          rating: rating,
+          reviewCount: reviewCount,
+        );
+      }).toList();
+
+      debugPrint('Successfully processed ${posts.length} posts');
+      return posts;
+    } catch (e) {
+      debugPrint('Error in _fetchPostsOptimized: $e');
       return [];
     }
   }
