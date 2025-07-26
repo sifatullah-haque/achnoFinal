@@ -28,6 +28,10 @@ class HomepageController extends ChangeNotifier {
   final List<int> _distanceOptions = [5, 10, 25];
   final int _defaultDistanceFilter = 10;
 
+  HomepageController() {
+    _selectedDistance = _defaultDistanceFilter;
+  }
+
   // Cache variables
   DateTime? _lastFetchTime;
   static const Duration _cacheValidDuration = Duration(minutes: 2);
