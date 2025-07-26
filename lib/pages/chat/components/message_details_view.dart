@@ -280,6 +280,44 @@ class _MessageDetailsViewState extends State<MessageDetailsView>
   }
 
   Widget _buildMessagesList(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    // Debug logging
+    debugPrint('Messages count: ${widget.controller.messages.length}');
+    debugPrint('Current user ID: ${widget.controller.currentUserId}');
+    debugPrint('Conversation ID: ${widget.conversationId}');
+
+    if (widget.controller.messages.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.chat_bubble_outline,
+              size: 64.sp,
+              color: AppTheme.textSecondaryColor.withOpacity(0.5),
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              l10n.noMessages ?? 'No messages yet',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: AppTheme.textSecondaryColor.withOpacity(0.7),
+              ),
+            ),
+            SizedBox(height: 8.h),
+            Text(
+              'Start a conversation with ${widget.contactName}',
+              style: TextStyle(
+                fontSize: 14.sp,
+                color: AppTheme.textSecondaryColor.withOpacity(0.5),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return ListView.builder(
       controller: _scrollController,
       padding: EdgeInsets.all(16.w),

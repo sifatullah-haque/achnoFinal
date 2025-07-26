@@ -61,8 +61,12 @@ final appRouter = GoRouter(
         final conversationId = state.pathParameters['conversationId'];
         final params = state.extra as Map<String, dynamic>?;
 
+        debugPrint('Router: Conversation ID from path: $conversationId');
+        debugPrint('Router: Extra params: $params');
+
         // Validate conversation ID
         if (conversationId == null || conversationId.isEmpty) {
+          debugPrint('Router: Invalid conversation ID');
           return Scaffold(
             appBar: AppBar(title: const Text('Error')),
             body: Center(
@@ -81,6 +85,8 @@ final appRouter = GoRouter(
           );
         }
 
+        debugPrint(
+            'Router: Creating MessageDetails with conversationId: $conversationId');
         return MessageDetails(
           conversationId: conversationId,
           contactName: params?['contactName'] ?? 'Unknown',

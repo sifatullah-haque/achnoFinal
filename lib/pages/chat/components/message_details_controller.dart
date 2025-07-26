@@ -84,13 +84,20 @@ class MessageDetailsController extends ChangeNotifier {
   // Initialize controller
   Future<void> initialize(BuildContext context, String conversationId,
       String? contactId, Post? relatedPost) async {
+    debugPrint('Initializing MessageDetailsController');
+    debugPrint('Conversation ID: $conversationId');
+    debugPrint('Contact ID: $contactId');
+    debugPrint('Related Post: $relatedPost');
+
     await _getCurrentUser(context);
     await _initializeAudio();
 
     if (conversationId.isNotEmpty) {
+      debugPrint('Loading messages for conversation: $conversationId');
       await _loadMessages(conversationId);
       _setupMessagesListener(conversationId);
     } else {
+      debugPrint('Empty conversation ID, setting loading to false');
       _setLoading(false);
     }
 
@@ -112,9 +119,13 @@ class MessageDetailsController extends ChangeNotifier {
   // Get current user
   Future<void> _getCurrentUser(BuildContext context) async {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    debugPrint('Auth provider current user: ${authProvider.currentUser}');
     if (authProvider.currentUser != null) {
       _currentUserId = authProvider.currentUser!.id;
+      debugPrint('Set current user ID: $_currentUserId');
       notifyListeners();
+    } else {
+      debugPrint('No current user found in auth provider');
     }
   }
 
@@ -181,6 +192,12 @@ class MessageDetailsController extends ChangeNotifier {
       }
     } catch (e) {
       debugPrint('Error initializing audio: $e');
+      // Try to initialize player even if recorder fails
+      try {
+        await _initializePlayer();
+      } catch (playerError) {
+        debugPrint('Error initializing player: $playerError');
+      }
     }
   }
 
@@ -246,6 +263,7 @@ class MessageDetailsController extends ChangeNotifier {
   // Load messages
   Future<void> _loadMessages(String conversationId) async {
     _setLoading(true);
+    debugPrint('Loading messages for conversation: $conversationId');
 
     try {
       final querySnapshot = await FirebaseFirestore.instance
@@ -255,8 +273,12 @@ class MessageDetailsController extends ChangeNotifier {
           .orderBy('timestamp')
           .get();
 
+      debugPrint('Found ${querySnapshot.docs.length} messages in Firestore');
+
       final messages = querySnapshot.docs.map((doc) {
         final data = doc.data();
+        debugPrint('Processing message: ${doc.id} - ${data['content']}');
+
         MessageType messageType;
         switch (data['type']) {
           case 'audio':
@@ -280,6 +302,7 @@ class MessageDetailsController extends ChangeNotifier {
         );
       }).toList();
 
+      debugPrint('Processed ${messages.length} messages');
       _messages = messages;
       _setLoading(false);
 
@@ -500,6 +523,27 @@ class MessageDetailsController extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       debugPrint('Error playing audio: $e');
+      // Try to reinitialize player if it failed
+      try {
+        await _player.closePlayer();
+        await _initializePlayer();
+        // Try playing again after reinitialization
+        await _player.startPlayer(
+          fromURI: audioUrl,
+          codec: Codec.aacADTS,
+          whenFinished: () {
+            _isPlaying = false;
+            _currentlyPlayingId = '';
+            _audioPosition = null;
+            notifyListeners();
+          },
+        );
+        _isPlaying = true;
+        _currentlyPlayingId = messageId;
+        notifyListeners();
+      } catch (reinitError) {
+        debugPrint('Error reinitializing player: $reinitError');
+      }
     }
   }
 
@@ -553,6 +597,27 @@ class MessageDetailsController extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       debugPrint('Error playing modal audio: $e');
+      // Try to reinitialize player if it failed
+      try {
+        await _player.closePlayer();
+        await _initializePlayer();
+        // Try playing again after reinitialization
+        await _player.startPlayer(
+          fromURI: audioUrl,
+          codec: Codec.aacADTS,
+          whenFinished: () {
+            _isModalAudioPlaying = false;
+            _currentlyPlayingModalAudioUrl = null;
+            _audioPosition = null;
+            notifyListeners();
+          },
+        );
+        _isModalAudioPlaying = true;
+        _currentlyPlayingModalAudioUrl = audioUrl;
+        notifyListeners();
+      } catch (reinitError) {
+        debugPrint('Error reinitializing player for modal audio: $reinitError');
+      }
     }
   }
 

@@ -331,8 +331,7 @@ class _ChatViewState extends State<ChatView>
   }
 
   void _navigateToMessageDetails(ChatConversation conversation) {
-    context.push('/message-details', extra: {
-      'conversationId': conversation.id,
+    context.push('/chat/${conversation.id}', extra: {
       'contactName': conversation.participantName,
       'contactAvatar': conversation.participantAvatar,
       'contactId': conversation.participantId,
