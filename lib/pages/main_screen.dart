@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:achno/pages/homepage/homepage.dart';
 import 'package:achno/pages/chat/messages.dart';
 import 'package:achno/pages/notification/notification.dart';
-import 'package:achno/pages/profile/profile.dart';
+import 'package:achno/pages/profile/mainProfile/profile.dart';
 import 'package:achno/pages/buttonNavigator/buttonNavigator.dart';
 import 'package:achno/providers/notification_provider.dart';
 import 'package:provider/provider.dart';

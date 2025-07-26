@@ -7,7 +7,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:achno/l10n/app_localizations.dart';
 import 'package:flutter/scheduler.dart';
-import '../../providers/auth_provider.dart';
+import '../../../providers/auth_provider.dart';
 import 'dart:ui';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:audio_session/audio_session.dart';

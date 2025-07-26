@@ -5,7 +5,7 @@ import 'package:achno/config/theme.dart';
 import 'package:achno/l10n/app_localizations.dart';
 import 'package:achno/pages/chat/components/message_details_controller.dart';
 import 'package:achno/pages/chat/components/message_details_widgets.dart';
-import 'package:achno/pages/profile/viewProfile.dart';
+import 'package:achno/pages/profile/viewProfile/viewProfile.dart';
 import 'dart:math' as math;
 import 'package:permission_handler/permission_handler.dart';
 

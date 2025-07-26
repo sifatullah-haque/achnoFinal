@@ -26,6 +26,14 @@ service cloud.firestore {
         request.resource.data.isProfessional is bool;
       allow update: if isOwner(userId);
       allow delete: if isOwner(userId);
+      
+      // Notifications subcollection rules
+      match /notifications/{notificationId} {
+        allow read: if isOwner(userId);
+        allow create: if isAuthenticated();
+        allow update: if isOwner(userId);
+        allow delete: if isOwner(userId);
+      }
     }
 
     // Posts collection rules

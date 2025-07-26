@@ -17,7 +17,7 @@ import 'package:provider/provider.dart';
 import 'package:achno/providers/auth_provider.dart';
 import 'package:achno/widgets/response_dialog.dart';
 import 'package:achno/widgets/directionality_text.dart';
-import 'package:achno/pages/profile/viewProfile.dart';
+import 'package:achno/pages/profile/viewProfile/viewProfile.dart';
 import 'package:achno/utils/activity_icon_helper.dart'; // Import from new location
 
 class PostCard extends StatefulWidget {
